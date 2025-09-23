@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ateliê do Lobo - Impressão Gráfica & 3D</title>
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+  
+  <!-- GSAP para animações avançadas -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js" defer></script>
+  
+  <!-- Script principal -->
+  <script src="script.js" defer></script>
+</head>
+<body>
+
+  <!-- =====================
+       HEADER
+  ===================== -->
+  <header>
+    <div class="container">
+      <h1>Ateliê do Lobo</h1>
+      <a href="#orcamento" class="btn">Peça seu Orçamento</a>
+    </div>
+  </header>
+
+  <!-- =====================
+       HERO
+  ===================== -->
+  <section id="hero">
+    <div class="container">
+      <p>Do papel ao digital: soluções criativas em impressão gráfica e impressão 3D personalizada.</p>
+      <a href="#orcamento" class="btn">Solicitar Orçamento</a>
+    </div>
+  </section>
+
+  <!-- =====================
+       SERVIÇOS
+  ===================== -->
+  <section id="servicos">
+    <div class="container">
+      <h2>Nossos Serviços</h2>
+      <div class="grid">
+        <div class="card">
+          <h3>Impressão 3D</h3>
+          <p>Protótipos, peças sob medida e produtos personalizados em diversos materiais.</p>
+        </div>
+        <div class="card">
+          <h3>Modelagem 3D</h3>
+          <p>Criação e otimização de arquivos para impressão 3D com alta qualidade.</p>
+        </div>
+        <div class="card">
+          <h3>Gráfica Tradicional</h3>
+          <p>Cartões, banners, folders, convites e muito mais para sua empresa ou evento.</p>
+        </div>
+        <div class="card">
+          <h3>Acabamentos</h3>
+          <p>Laminação, corte, dobra, encadernação e acabamentos especiais.</p>
+        </div>
+        <div class="card">
+          <h3>Brindes Personalizados</h3>
+          <p>Chaveiros, canetas, camisetas e itens promocionais com sua marca.</p>
+        </div>
+        <div class="card">
+          <h3>Consultoria Criativa</h3>
+          <p>Auxílio no design e produção de materiais gráficos e produtos 3D para seu projeto.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================
+       SERVIÇOS SOB PREMIUM
+  ===================== -->
+
+
+  <section id="servicos-degrade">
+  <div class="container">
+  <h2 style="color:#111; font-size:2rem; font-weight:700; margin-bottom:50px;">Serviços Premium</h2>
+    <div class="grid">
+      <!-- Seus cards aqui -->
+    </div>
+  </div>
+</section>
+
+
+  <!-- =====================
+       DIFERENCIAIS
+  ===================== -->
+  <section id="diferenciais">
+    <div class="container">
+      <h2>Por que escolher o Ateliê do Lobo?</h2>
+      <ul>
+        <li>✔ Qualidade profissional</li>
+        <li>✔ Entrega rápida</li>
+        <li>✔ Atendimento personalizado</li>
+        <li>✔ Impressão tradicional e 3D em um só lugar</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- =====================
+       PORTFÓLIO
+  ===================== -->
+  <section id="portfolio">
+    <div class="container">
+      <h2>Nosso Portfólio</h2>
+      <div class="grid">
+        <img src="img/projeto1.jpg" alt="Exemplo de Impressão">
+        <img src="img/projeto2.jpg" alt="Exemplo de Impressão">
+        <img src="img/projeto3.jpg" alt="Exemplo de Impressão">
+      </div>
+    </div>
+  </section>
+
+  <!-- =====================
+       DEPOIMENTOS
+  ===================== -->
+  <section id="depoimentos">
+    <div class="container">
+      <h2>O que dizem nossos clientes</h2>
+      <blockquote>
+        "Ótimo atendimento e qualidade impecável! Recomendo muito." – João Silva
+      </blockquote>
+      <blockquote>
+        "Meus protótipos em 3D ficaram perfeitos. Superaram minhas expectativas." – Maria Oliveira
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- =====================
+       FAQ
+  ===================== -->
+  <section id="faq">
+    <div class="container">
+      <h2>Perguntas Frequentes</h2>
+      <details>
+        <summary>Vocês fazem impressões em grandes quantidades?</summary>
+        <p>Sim, temos capacidade para produções em escala e também para projetos sob medida.</p>
+      </details>
+      <details>
+        <summary>Qual o prazo médio de entrega?</summary>
+        <p>Depende do tipo de serviço, mas geralmente entre 3 a 7 dias úteis.</p>
+      </details>
+      <details>
+        <summary>Vocês entregam em outras cidades?</summary>
+        <p>Sim, enviamos para todo o Brasil.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- =====================
+       ORÇAMENTO
+  ===================== -->
+  <section id="orcamento">
+    <div class="container">
+      <h2>Solicite seu Orçamento</h2>
+      <form action="mailto:ateliedolobodf@gmail.com" method="post" enctype="text/plain">
+        <input type="text" name="nome" placeholder="Seu nome" required>
+        <input type="email" name="email" placeholder="Seu e-mail" required>
+        <input type="tel" name="telefone" placeholder="Seu WhatsApp" required>
+        <textarea name="mensagem" placeholder="Descreva seu projeto"></textarea>
+        <button type="submit" class="btn">Enviar Pedido</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- =====================
+       FOOTER
+  ===================== -->
+  <footer>
+    <div class="container">
+      <p>© 2025 Ateliê do Lobo - Todos os direitos reservados</p>
+      <p>📧 E-mail: <a href="mailto:ateliedolobodf@gmail.com">ateliedolobodf@gmail.com</a></p>
+    </div>
+  </footer>
+
+  <!-- =====================
+       WHATSAPP FLUTUANTE
+  ===================== -->
+  <a href="https://wa.me/5511999999999" class="whatsapp-float" target="_blank">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+  </a>
+
+</body>
+</html>
