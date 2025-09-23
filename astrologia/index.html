@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AstroClare — Sua Página de Astrologia</title>
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+  <!-- Font Awesome para ícones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    :root{
+      --bg: #ECECEC; /* fundo escolhido */
+      --muted-text: #444444;
+      --primary: #2b2d42;
+      --accent: #8d72e1;
+      --cta: #ff6b6b;
+    }
+    html,body{height:100%;}
+    body{
+      background: var(--bg);
+      color: var(--muted-text);
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.6;
+    }
+    .brand{font-family:'Montserrat',sans-serif;letter-spacing:0.6px}
+    .hero{
+      padding:4.5rem 0;
+    }
+    .card-astro{background:rgba(255,255,255,0.85);border:0;border-radius:12px}
+    .zodiac-icon{font-size:26px}
+    .zodiac-grid .card{min-height:120px}
+    .badge-accent{background:linear-gradient(90deg,#8d72e1,#5f9df7);color:white}
+    .floating-whatsapp{
+      position:fixed;right:20px;bottom:20px;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#25d366;color:#fff;box-shadow:0 6px 18px rgba(0,0,0,0.18);z-index:2000;text-decoration:none}
+    .floating-whatsapp:hover{transform:translateY(-3px)}
+    footer{padding:2.5rem 0;color:#666}
+    /* small responsive tweaks */
+    @media (max-width:575px){
+      .hero{padding:3rem 0}
+      .zodiac-grid .card{min-height:100px}
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar navbar-expand-lg navbar-light bg-transparent py-3">
+  <div class="container">
+    <a class="navbar-brand brand text-dark" href="#">AstroClare</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navmenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#horoscope">Horóscopo</a></li>
+        <li class="nav-item"><a class="nav-link" href="#zodiac">Signos</a></li>
+        <li class="nav-item"><a class="nav-link" href="#compatibility">Compatibilidade</a></li>
+        <li class="nav-item"><a class="nav-link btn btn-sm btn-outline-primary ms-2" href="#subscribe">Assine</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-6">
+        <h1 class="display-6 fw-bold mb-3">Descubra hoje o que os astros reservam para você</h1>
+        <p class="lead text-muted">Interpretações claras e práticas para o seu dia a dia: amor, carreira, bem-estar e decisões importantes — sem jargões.</p>
+
+        <div class="d-flex gap-2 mt-4">
+          <a href="#horoscope" class="btn btn-lg btn-primary">Ver meu horóscopo</a>
+          <a href="#compatibility" class="btn btn-lg btn-outline-dark">Teste de compatibilidade</a>
+        </div>
+
+        <div class="mt-4 card card-astro p-3 shadow-sm">
+          <div class="d-flex align-items-center">
+            <div class="me-3">
+              <i class="fa-solid fa-sparkles fa-2x" style="color:var(--accent)"></i>
+            </div>
+            <div>
+              <strong>Leitura rápida:</strong>
+              <div class="text-muted small">Escolha seu signo abaixo e veja um resumo prático de hoje.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-6 mt-4 mt-lg-0">
+        <div class="card card-astro p-4 shadow-sm">
+          <h5 class="mb-3">Horóscopo do dia</h5>
+          <div class="mb-3">
+            <select id="selectSign" class="form-select">
+              <option value="">— Selecionar signo —</option>
+            </select>
+          </div>
+          <div id="horoscopeResult" class="pt-2">
+            <p class="text-muted">Selecione um signo para ver o horóscopo de hoje.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- ZODIAC GRID -->
+<section id="zodiac" class="py-4">
+  <div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+      <h3 class="mb-0">Signos do Zodíaco</h3>
+      <span class="badge badge-accent py-2 px-3">Siga seu mapa</span>
+    </div>
+
+    <div class="row zodiac-grid g-3">
+      <!-- 12 signos: cada card com ícone, nome e data -->
+    </div>
+  </div>
+</section>
+
+<!-- COMPATIBILITY -->
+<section id="compatibility" class="py-4">
+  <div class="container">
+    <h4>Calculadora de Compatibilidade</h4>
+    <p class="text-muted">Teste a sintonia entre dois signos de forma rápida.</p>
+
+    <div class="row g-3 align-items-center">
+      <div class="col-md-4">
+        <select id="signA" class="form-select"></select>
+      </div>
+      <div class="col-md-4">
+        <select id="signB" class="form-select"></select>
+      </div>
+      <div class="col-md-4">
+        <button id="checkBtn" class="btn btn-outline-primary w-100">Ver compatibilidade</button>
+      </div>
+    </div>
+
+    <div id="compatResult" class="mt-3"></div>
+  </div>
+</section>
+
+<!-- SUBSCRIBE / CTA -->
+<section id="subscribe" class="py-5">
+  <div class="container">
+    <div class="row align-items-center">
+      <div class="col-lg-7">
+        <h4>Receba previsões semanais no seu e-mail</h4>
+        <p class="text-muted">Conteúdo direto, sem spam. Dicas práticas para aproveitar a energia dos astros.</p>
+      </div>
+      <div class="col-lg-5">
+        <form id="subscribeForm" class="row g-2">
+          <div class="col-8">
+            <input type="email" class="form-control" placeholder="Seu melhor e-mail" required>
+          </div>
+          <div class="col-4">
+            <button class="btn btn-primary w-100" type="submit">Assinar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8">
+        <strong>AstroClare</strong> — interpretações práticas de astrologia. &nbsp; <small class="text-muted">© 2025</small>
+      </div>
+      <div class="col-md-4 text-md-end">
+        <a href="#" class="text-muted me-2">Política de Privacidade</a>
+        <a href="#" class="text-muted">Contato</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp flutuante (opcional) -->
+<a class="floating-whatsapp" href="https://wa.me/5511999999999" target="_blank" aria-label="Fale no WhatsApp">
+  <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- Bootstrap JS + small app script -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Dados básicos dos signos (pode ser expandido)
+const SIGNS = [
+  {key:'aries', name:'Áries', date:'21/03 — 19/04', icon:'\u2600', desc:'Dia de iniciativa: coragem para começar o que planejou.'},
+  {key:'taurus', name:'Touro', date:'20/04 — 20/05', icon:'\u263D', desc:'Foco na estabilidade: cuide do seu conforto e finanças.'},
+  {key:'gemini', name:'Gêmeos', date:'21/05 — 20/06', icon:'\u2601', desc:'Comunicação em alta: boas oportunidades em conversas.'},
+  {key:'cancer', name:'Câncer', date:'21/06 — 22/07', icon:'\u263A', desc:'Tempo de cuidar das emoções e do lar.'},
+  {key:'leo', name:'Leão', date:'23/07 — 22/08', icon:'\u2605', desc:'Brilhe com autenticidade: destaque em projetos criativos.'},
+  {key:'virgo', name:'Virgem', date:'23/08 — 22/09', icon:'\u2602', desc:'Organização prática: revise rotinas e detalhes.'},
+  {key:'libra', name:'Libra', date:'23/09 — 22/10', icon:'\u2696', desc:'Busca por equilíbrio: diálogo favorece acordos.'},
+  {key:'scorpio', name:'Escorpião', date:'23/10 — 21/11', icon:'\u2620', desc:'Intensidade emocional: transforme o que não serve.'},
+  {key:'sagittarius', name:'Sagitário', date:'22/11 — 21/12', icon:'\u2699', desc:'A aventura chama: aprenda algo novo.'},
+  {key:'capricorn', name:'Capricórnio', date:'22/12 — 19/01', icon:'\u2615', desc:'Disciplina e metas: passos firmes para resultados.'},
+  {key:'aquarius', name:'Aquário', date:'20/01 — 18/02', icon:'\u269B', desc:'Originalidade em foco: ideias próprias atraem atenção.'},
+  {key:'pisces', name:'Peixes', date:'19/02 — 20/03', icon:'\u2606', desc:'Intuição aguçada: confie nos sinais sutis.'}
+];
+
+// Preenche selects e grid
+const gridRow = document.querySelector('.zodiac-grid');
+const selectSign = document.getElementById('selectSign');
+const signA = document.getElementById('signA');
+const signB = document.getElementById('signB');
+
+SIGNS.forEach(s=>{
+  // grid
+  const col = document.createElement('div'); col.className='col-6 col-md-3 col-lg-2';
+  col.innerHTML = `
+    <div class="card p-3 h-100 shadow-sm">
+      <div class="d-flex align-items-center">
+        <div class="me-2 zodiac-icon">${s.icon}</div>
+        <div>
+          <strong>${s.name}</strong>
+          <div class="small text-muted">${s.date}</div>
+        </div>
+      </div>
+    </div>
+  `;
+  gridRow.appendChild(col);
+
+  // selects
+  const opt = document.createElement('option'); opt.value=s.key; opt.textContent=s.name;
+  selectSign.appendChild(opt);
+  const optA = opt.cloneNode(true); signA.appendChild(optA);
+  const optB = opt.cloneNode(true); signB.appendChild(optB);
+});
+
+// Horóscopo básico ao selecionar
+selectSign.addEventListener('change', ()=>{
+  const val = selectSign.value;
+  const el = document.getElementById('horoscopeResult');
+  if(!val){ el.innerHTML = '<p class="text-muted">Selecione um signo para ver o horóscopo de hoje.</p>'; return; }
+  const s = SIGNS.find(x=>x.key===val);
+  if(!s) return;
+  el.innerHTML = `
+    <div class="card card-astro p-3">
+      <h5 class="mb-1">${s.name} <small class="text-muted"> — ${s.date}</small></h5>
+      <p class="mb-1">${s.desc}</p>
+      <div class="small text-muted">Dica: use a energia do dia para focar em prioridades.</div>
+    </div>
+  `;
+});
+
+// Compatibilidade simples (aleatória baseada em signos, mas coerente)
+function basicCompatibility(a,b){
+  if(!a||!b) return null;
+  if(a===b) return {score:90, text:'Alto potencial — energia alinhada.'};
+  // regra simplificada por elemento (fogo, terra, ar, água)
+  const elements = {
+    aries:'fire', leo:'fire', sagittarius:'fire',
+    taurus:'earth', virgo:'earth', capricorn:'earth',
+    gemini:'air', libra:'air', aquarius:'air',
+    cancer:'water', scorpio:'water', pisces:'water'
+  };
+  const eA = elements[a]; const eB = elements[b];
+  if(eA===eB) return {score:75, text:'Compatibilidade estável — elementos em sintonia.'};
+  // combinations
+  const goodPairs = [['fire','air'],['earth','water']];
+  const isGood = goodPairs.some(p=> (p[0]===eA && p[1]===eB) || (p[0]===eB && p[1]===eA));
+  if(isGood) return {score:68, text:'Boa conexão — comunicação e estímulo mútuo.'};
+  return {score:52, text:'Compatibilidade moderada — requer esforço e compreensão.'};
+}
+
+// botão de compatibilidade
+document.getElementById('checkBtn').addEventListener('click', ()=>{
+  const a = signA.value; const b = signB.value;
+  const out = document.getElementById('compatResult');
+  if(!a||!b){ out.innerHTML = '<div class="alert alert-warning">Escolha os dois signos para testar.</div>'; return; }
+  const res = basicCompatibility(a,b);
+  out.innerHTML = `
+    <div class="card card-astro p-3">
+      <h5>Compatibilidade: <span class="badge bg-primary">${res.score}%</span></h5>
+      <p class="mb-1">${res.text}</p>
+      <div class="progress mt-2" style="height:10px">
+        <div class="progress-bar" role="progressbar" style="width:${res.score}%" aria-valuenow="${res.score}" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+  `;
+});
+
+// form subscribe (apenas mock)
+document.getElementById('subscribeForm').addEventListener('submit', (e)=>{
+  e.preventDefault();
+  alert('Obrigado! Em breve você receberá nossas previsões no e-mail informado.');
+  e.target.reset();
+});
+
+</script>
+</body>
+</html>
