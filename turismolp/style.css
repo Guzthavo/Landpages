@@ -1,0 +1,219 @@
+/* ==========================================================================
+   DESIGN TOKENS & SYSTEM VARIABLES (Arquitetura Escalável)
+   ========================================================================== */
+:root {
+    --voopter-blue: #0066ff;
+    --voopter-blue-rgb: 0, 102, 255;
+    --voopter-orange: #ff6f00;
+    --voopter-orange-hover: #e06200;
+    --dark-bg: #0f172a;
+    --light-gray: #f8fafc;
+    --text-main: #1e293b;
+    --text-muted: #64748b;
+    --whatsapp-green: #25D366;
+    
+    /* Shadows tridimensionais suaves */
+    --shadow-premium: 0 30px 60px -15px rgba(15, 23, 42, 0.08), 0 10px 25px -5px rgba(15, 23, 42, 0.05);
+    --ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   BASE RESETS
+   ========================================================================== */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--light-gray);
+    color: var(--text-main);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+/* ==========================================================================
+   HERO COMPONENT (Visual Cinema com Imagem e Camada de Cor)
+   ========================================================================== */
+.search-hero {
+    /* Fusão de imagem premium com gradiente escuro para dar contraste aos textos brancos */
+    background: linear-gradient(135deg, rgba(0, 40, 120, 0.85) 0%, rgba(0, 102, 255, 0.7) 100%), 
+                url('https://images.unsplash.com/photo-1506929562872-bb421503ef21?auto=format&fit=crop&w=1920&q=80') no-repeat center center/cover;
+    padding: 120px 0 160px 0;
+    color: #ffffff;
+    position: relative;
+}
+
+.search-hero h1 {
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* ==========================================================================
+   THE SEARCH ENGINE BOX (Efeito Glassmorphism / Vidro Flutuante)
+   ========================================================================== */
+.search-engine-box {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 1);
+    border-radius: 24px; 
+    box-shadow: var(--shadow-premium);
+    padding: 40px;
+    margin-top: -90px; 
+    position: relative;
+    z-index: 10;
+}
+
+/* Abas de Navegação Estilo Pílula Minimalista */
+.nav-search-tabs {
+    gap: 10px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 16px;
+}
+
+.nav-search-tabs .nav-link {
+    color: var(--text-muted);
+    font-weight: 700;
+    font-size: 0.95rem;
+    border: none;
+    padding: 14px 28px;
+    border-radius: 14px;
+    transition: all 0.25s var(--ease-standard);
+    background-color: transparent;
+}
+
+.nav-search-tabs .nav-link:hover:not(.active) {
+    color: var(--voopter-blue);
+    background-color: rgba(var(--voopter-blue-rgb), 0.06);
+}
+
+.nav-search-tabs .nav-link.active {
+    background-color: var(--voopter-blue) !important;
+    color: #ffffff !important;
+    box-shadow: 0 8px 20px rgba(var(--voopter-blue-rgb), 0.3);
+}
+
+/* Inputs Otimizados com Bordas Finas e Feedback Elegante */
+.search-engine-box .form-control {
+    border: 2px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 12px 16px;
+    font-weight: 500;
+    color: var(--text-main);
+    transition: all 0.2s var(--ease-standard);
+}
+
+.search-engine-box .form-control:focus {
+    border-color: var(--voopter-blue);
+    box-shadow: 0 0 0 4px rgba(var(--voopter-blue-rgb), 0.12);
+    background-color: #ffffff;
+}
+
+/* Botão de Busca de Alta Conversão (Laranja do Voopter) */
+.btn-warning {
+    background-color: var(--voopter-orange) !important;
+    color: #ffffff !important;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    border: none !important;
+    border-radius: 14px;
+    padding: 14px 24px;
+    transition: transform 0.2s var(--ease-out-back), box-shadow 0.2s var(--ease-standard);
+}
+
+.btn-warning:hover {
+    background-color: var(--voopter-orange-hover) !important;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(255, 111, 0, 0.35);
+}
+
+.btn-warning:active {
+    transform: translateY(0);
+}
+
+/* ==========================================================================
+   DESTINY CARDS (Grid Inferior de Serviços)
+   ========================================================================== */
+.destiny-card {
+    border: 1px solid #f1f5f9;
+    border-radius: 20px;
+    background: #ffffff;
+    padding: 28px !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+    transition: transform 0.3s var(--ease-out-back), box-shadow 0.3s var(--ease-standard), border-color 0.3s var(--ease-standard);
+    cursor: pointer;
+}
+
+.destiny-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(var(--voopter-blue-rgb), 0.25);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05);
+}
+
+/* Ícone Interno em Formato "Squircle" com Animação de Rotação Coesa */
+.icon-badge {
+    width: 60px;
+    height: 60px;
+    background: rgba(var(--voopter-blue-rgb), 0.06);
+    color: var(--voopter-blue);
+    border-radius: 16px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    transition: all 0.3s var(--ease-out-back);
+}
+
+.destiny-card:hover .icon-badge {
+    transform: scale(1.1) rotate(6deg);
+    background-color: var(--voopter-blue);
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   FLOATING ACTION BUTTON (WhatsApp HUD)
+   ========================================================================== */
+.whatsapp-fab {
+    position: fixed;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    background-color: var(--whatsapp-green);
+    color: #ffffff;
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    box-shadow: 0 8px 24px rgba(37, 211, 102, 0.35);
+    z-index: 1050;
+    text-decoration: none;
+    transition: all 0.3s var(--ease-out-back);
+}
+
+.whatsapp-fab:hover {
+    transform: scale(1.12) translateY(-4px);
+    color: #ffffff;
+    box-shadow: 0 16px 32px rgba(37, 211, 102, 0.5);
+}
+
+/* Pulso de radar invisível para prender a atenção do usuário de forma polida */
+.whatsapp-fab::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--whatsapp-green);
+    border-radius: 50%;
+    z-index: -1;
+    opacity: 0.4;
+    animation: pulse-radar 2.5s infinite var(--ease-standard);
+}
+
+@keyframes pulse-radar {
+    0% { transform: scale(1); opacity: 0.4; }
+    100% { transform: scale(1.4); opacity: 0; }
+}
+
+/* Responsividade de Tela Móbile */
+@media (max-width: 768px) {
+    .search-hero { padding: 80px 0 120px 0; }
+    .search-engine-box { padding: 24px; margin-top: -60px; border-radius: 18px; }
+    .nav-search-tabs .nav-link { padding: 10px 18px; font-size: 0.85rem; }
+}

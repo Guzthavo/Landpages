@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Encontre os melhores preços de passagens, pacotes, hotéis e cruzeiros. Compare e faça sua cotação personalizada via WhatsApp.">
+    
+    <title>Comparador & Agência de Viagens | Premium Tour</title>
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav class="navbar navbar-light bg-white shadow-sm sticky-top">
+        <div class="container">
+            <a class="navbar-brand fw-bold text-primary" href="#">
+                <i class="fa-solid fa-plane-departure me-2"></i>PREMIUM COMPARA
+            </a>
+            <span class="badge bg-success py-2 px-3 rounded-pill">Suporte Via WhatsApp</span>
+        </div>
+    </nav>
+
+    <header class="search-hero">
+        <div class="container">
+            <h1 class="fw-bold display-5 mb-2">Encontre sua viagem ideal pelo menor preço</h1>
+            <p class="lead opacity-90">Pesquise passagens, hotéis, pacotes e cruzeiros nacionais ou internacionais.</p>
+        </div>
+    </header>
+
+    <main class="container mb-5">
+        <div class="search-engine-box">
+            <ul class="nav nav-pills nav-search-tabs mb-4" id="searchTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="tab-aereo" data-bs-toggle="pill" data-bs-target="#panel-aereo" type="button" role="tab">🛫 Vôos</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-hoteis" data-bs-toggle="pill" data-bs-target="#panel-hoteis" type="button" role="tab">🏨 Hotéis</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="tab-pacotes" data-bs-toggle="pill" data-bs-target="#panel-pacotes" type="button" role="tab">📦 Pacotes</button>
+                </li>
+            </ul>
+
+            <div class="tab-content" id="searchTabsContent">
+                
+                <div class="tab-pane fade show active" id="panel-aereo" role="tabpanel">
+                    <form id="form-aereo" onsubmit="App.engine.processSearch(event, 'Passagens Aéreas')">
+                        <div class="row g-3">
+                            <div class="col-md-3">
+                                <label class="form-label small fw-bold text-muted">Origem</label>
+                                <input type="text" class="form-control py-2" placeholder="Cidade ou Aeroporto" required id="origem-aereo">
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label small fw-bold text-muted">Destino</label>
+                                <input type="text" class="form-control py-2" placeholder="Ex: Paris, São Paulo, Lisboa" required id="destino-aereo">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-bold text-muted">Data Ida e Volta</label>
+                                <input type="text" class="form-control py-2" placeholder="Ex: Início de Julho" required id="data-aereo">
+                            </div>
+                            <div class="col-md-2 d-flex align-items-end">
+                                <button type="submit" class="btn btn-warning w-100 py-2 fw-bold text-white shadow-sm" style="background-color: var(--voopter-orange); border: none;">
+                                    BUSCAR PREÇO
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-pane fade" id="panel-hoteis" role="tabpanel">
+                    <form id="form-hoteis" onsubmit="App.engine.processSearch(event, 'Hotéis e Hospedagens')">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label class="form-label small fw-bold text-muted">Onde quer se hospedar?</label>
+                                <input type="text" class="form-control py-2" placeholder="Destino ou nome do hotel" required id="destino-hotel">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label small fw-bold text-muted">Período / Quantidade de Dias</label>
+                                <input type="text" class="form-control py-2" placeholder="Ex: 5 diárias em Agosto" required id="data-hotel">
+                            </div>
+                            <div class="col-md-2">
+                                <label class="form-label small fw-bold text-muted">Hóspedes</label>
+                                <input type="text" class="form-control py-2" placeholder="Ex: 2 adultos" required id="hospedes-hotel">
+                            </div>
+                            <div class="col-md-2 d-flex align-items-end">
+                                <button type="submit" class="btn btn-warning w-100 py-2 fw-bold text-white" style="background-color: var(--voopter-orange); border: none;">
+                                    BUSCAR HOTEL
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="tab-pane fade" id="panel-pacotes" role="tabpanel">
+                    <form id="form-pacotes" onsubmit="App.engine.processSearch(event, 'Pacotes Completos')">
+                        <div class="row g-3">
+                            <div class="col-md-5">
+                                <label class="form-label small fw-bold text-muted">Para onde você quer ir?</label>
+                                <input type="text" class="form-control py-2" placeholder="Destino nacional ou internacional" required id="destino-pacote">
+                            </div>
+                            <div class="col-md-5">
+                                <label class="form-label small fw-bold text-muted">Mês pretendido</label>
+                                <input type="text" class="form-control py-2" placeholder="Ex: Outubro de 2026" required id="data-pacote">
+                            </div>
+                            <div class="col-md-2 d-flex align-items-end">
+                                <button type="submit" class="btn btn-warning w-100 py-2 fw-bold text-white" style="background-color: var(--voopter-orange); border: none;">
+                                    BUSCAR PACOTE
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="mt-5 pt-4">
+            <h3 class="fw-bold h4 mb-4 text-center text-md-start">Outros serviços especializados</h3>
+            <section class="row g-4 text-center" id="services-grid-injector" aria-label="Serviços Adicionais"></section>
+        </div>
+    </main>
+
+    <footer class="bg-white py-4 border-top text-center text-muted mt-5">
+        <div class="container">
+            <p class="mb-1 small fw-bold">&copy; 2026 Premium Compara & Viagens. Todos os direitos reservados.</p>
+            <p class="mb-0 x-small text-secondary">Aéreo, Hotéis, Cruzeiros, Europa, Transfers e Atividades Globais.</p>
+        </div>
+    </footer>
+
+    <a href="#" class="whatsapp-fab shadow" onclick="App.engine.redirectDirect('Geral')" role="button" aria-label="Falar com suporte">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        const App = {
+            config: {
+                // IMPORTANTE: Insira aqui o número real do WhatsApp do seu cliente (DDD + Número, apenas dígitos)
+                whatsappNumber: "5511999999999", 
+                globalWelcomeMessage: "Olá! Estava navegando no site e gostaria de solicitar uma consultoria de viagem personalizada."
+            },
+
+            servicesData: [
+                { title: "Cruzeiros Marítimos", icon: "fa-ship", desc: "Roteiros exclusivos pelos melhores navios do mundo." },
+                { title: "Serviços de Transfers", icon: "fa-car-side", desc: "Transporte privativo e seguro do aeroporto para o hotel." },
+                { title: "Locação de Veículos", icon: "fa-car", desc: "Aluguel de carros global com as melhores tarifas e seguros." },
+                { title: "Passeios e Ingressos", icon: "fa-map-location-dot", desc: "Garanta tours guiados, museus e atrações sem filas." }
+            ],
+
+            engine: {
+                processSearch(event, category) {
+                    event.preventDefault();
+                    
+                    let messageOutput = `✨ *NOVA SOLICITAÇÃO DE COTAÇÃO - PREMIUM COMPARA* ✨\n`;
+                    messageOutput += `━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+                    messageOutput += `🗂️ *Categoria:* ${category}\n\n`;
+
+                    switch (category) {
+                        case 'Passagens Aéreas':
+                            const origemAereo = document.getElementById('origem-aereo')?.value.trim();
+                            const destinoAereo = document.getElementById('destino-aereo')?.value.trim();
+                            const dataAereo = document.getElementById('data-aereo')?.value.trim();
+                            
+                            messageOutput += `🛫 *Origem:* ${origemAereo}\n`;
+                            messageOutput += `🛬 *Destino:* ${destinoAereo}\n`;
+                            messageOutput += `📅 *Período/Datas:* ${dataAereo}`;
+                            break;
+
+                        case 'Hotéis e Hospedagens':
+                            const destinoHotel = document.getElementById('destino-hotel')?.value.trim();
+                            const dataHotel = document.getElementById('data-hotel')?.value.trim();
+                            const hospedesHotel = document.getElementById('hospedes-hotel')?.value.trim();
+                            
+                            messageOutput += `🏨 *Destino:* ${destinoHotel}\n`;
+                            messageOutput += `📅 *Período/Diárias:* ${dataHotel}\n`;
+                            messageOutput += `👥 *Hóspedes:* ${hospedesHotel}`;
+                            break;
+
+                        case 'Pacotes Completos':
+                            const destinoPacote = document.getElementById('destino-pacote')?.value.trim();
+                            const dataPacote = document.getElementById('data-pacote')?.value.trim();
+                            
+                            messageOutput += `🏁 *Destino Desejado:* ${destinoPacote}\n`;
+                            messageOutput += `📅 *Mês Pretendido:* ${dataPacote}`;
+                            break;
+                        
+                        default:
+                            messageOutput += `Gostaria de receber informações personalizadas sobre este serviço.`;
+                    }
+
+                    messageOutput += `\n━━━━━━━━━━━━━━━━━━━━━━━━━━\n`;
+                    messageOutput += `🕒 _Enviado via Assistente Virtual de Viagens_`;
+
+                    App.engine.sendToWhatsapp(messageOutput);
+                },
+
+                redirectDirect(serviceName) {
+                    let formattedMessage = App.config.globalWelcomeMessage;
+                    if(serviceName !== 'Geral') {
+                        formattedMessage = `Olá! Estava navegando no catálogo do site e gostaria de solicitar informações e valores para o serviço especializado de: *[${serviceName}]*.`;
+                    }
+                    App.engine.sendToWhatsapp(formattedMessage);
+                },
+
+                sendToWhatsapp(finalMessage) {
+                    const secureQueryParams = new URLSearchParams({
+                        phone: App.config.whatsappNumber,
+                        text: finalMessage
+                    });
+                    const gatewayUrl = `https://api.whatsapp.com/send?${secureQueryParams.toString()}`;
+                    window.open(gatewayUrl, '_blank', 'noopener,noreferrer');
+                }
+            },
+
+            ui: {
+                renderExtraServices() {
+                    const gridContainer = document.getElementById("services-grid-injector");
+                    if (!gridContainer) return;
+
+                    gridContainer.innerHTML = App.servicesData.map(item => `
+                        <div class="col-xl-3 col-md-6">
+                            <div class="card destiny-card p-3 shadow-sm h-100 d-flex flex-row align-items-center" 
+                                 onclick="App.engine.redirectDirect('${item.title}')"
+                                 role="button" 
+                                 tabindex="0" 
+                                 aria-label="Selecionar cotação para ${item.title}">
+                                <div class="icon-badge me-3">
+                                    <i class="fa-solid ${item.icon}" aria-hidden="true"></i>
+                                </div>
+                                <div class="text-start">
+                                    <h4 class="h6 fw-bold mb-1 text-dark">${item.title}</h4>
+                                    <p class="text-muted small mb-0">${item.desc}</p>
+                                </div>
+                            </div>
+                        </div>
+                    `).join('');
+                },
+
+                setupAccessibility() {
+                    const gridContainer = document.getElementById("services-grid-injector");
+                    if (!gridContainer) return;
+
+                    gridContainer.addEventListener('keydown', (event) => {
+                        if (event.key === 'Enter') {
+                            const card = event.target.closest('.destiny-card');
+                            if (card) card.click();
+                        }
+                    });
+                }
+            },
+
+            init() {
+                document.addEventListener("DOMContentLoaded", () => {
+                    App.ui.renderExtraServices();
+                    App.ui.setupAccessibility();
+                });
+            }
+        };
+
+        App.init();
+    </script>
+</body>
+</html>
