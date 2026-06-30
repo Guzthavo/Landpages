@@ -1,0 +1,699 @@
+/* ==========================================================================
+   1. VARIABLES & DESIGN TOKENS
+   ========================================================================== */
+:root {
+    --bg-cream: #faf6f0;
+    --bg-dots: #f4eee3;
+    --dark-coffee: #1a0f0a;
+    --dark-chocolate: #261610;
+    --accent-orange: #c97d55;
+    --accent-orange-hover: #b36942;
+    --text-muted: #8c7e74;
+    --text-light-muted: #dfd5cb; /* NOVA: Contraste perfeito para textos sobre fundos marrons */
+    --border-light: #eadecc;
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+}
+
+/* ==========================================================================
+   2. GLOBAL STYLES & TYPOGRAPHY
+   ========================================================================== */
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-cream);
+    color: var(--dark-coffee);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .serif-font {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+
+.text-accent { color: var(--accent-orange); }
+.section-tag {
+    color: var(--accent-orange);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+/* Background Utilities */
+.dotted-bg {
+    background-image: radial-gradient(var(--bg-dots) 1.5px, transparent 1.5px);
+    background-size: 24px 24px;
+}
+
+/* ==========================================================================
+   3. SHARED COMPONENTS (BUTTONS & UI ELEMENTS)
+   ========================================================================== */
+.btn-accent, .btn-outline-light-custom, .btn-add-cart {
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    border: none;
+    transition: all var(--transition-fast);
+}
+
+.btn-accent {
+    background-color: var(--accent-orange);
+    color: #ffffff;
+}
+.btn-accent:hover { background-color: var(--accent-orange-hover); }
+
+.btn-outline-light-custom {
+    background-color: transparent;
+    color: #ffffff;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+.btn-outline-light-custom:hover {
+    border-color: #ffffff;
+    background-color: rgba(255,255,255,0.05);
+}
+
+.btn-add-cart {
+    background-color: var(--dark-coffee);
+    color: #ffffff;
+    padding: 8px 18px;
+    font-size: 0.85rem;
+}
+.btn-add-cart:hover {
+    background-color: var(--accent-orange);
+}
+
+/* Labels Padronizados */
+.spec-label, .notes-label, .grind-select-label, .stat-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    color: #a39489;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+}
+
+/* ==========================================================================
+   4. NAVIGATION BAR
+   ========================================================================== */
+.navbar {
+    background-color: var(--bg-cream);
+    border-bottom: 1px solid var(--border-light);
+    padding: 15px 0;
+}
+.navbar-brand img { height: 40px; }
+
+.nav-link {
+    color: var(--dark-coffee) !important;
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin: 0 12px;
+    transition: color var(--transition-fast);
+}
+.nav-link:hover { color: var(--accent-orange) !important; }
+
+.search-wrapper { position: relative; }
+.search-bar {
+    background-color: #f0e6d6;
+    border: none;
+    border-radius: 30px;
+    padding: 6px 18px 6px 36px;
+    font-size: 0.85rem;
+    color: var(--dark-coffee);
+    width: 180px;
+}
+.search-wrapper .bi-search {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #8c7e74;
+    font-size: 0.85rem;
+}
+
+.cart-icon-btn {
+    background-color: #f0e6d6;
+    border: none;
+    border-radius: 12px;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--dark-coffee);
+}
+
+/* ==========================================================================
+   5. HERO SECTION
+   ========================================================================== */
+.hero-section {
+    background: linear-gradient(135deg, #130a07 0%, #22140f 100%);
+    color: #ffffff;
+    padding: 80px 0;
+}
+.badge-hero {
+    background-color: rgba(201, 125, 85, 0.15);
+    border: 1px solid var(--accent-orange);
+    color: var(--accent-orange);
+    padding: 6px 14px;
+    border-radius: 30px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+.hero-title {
+    font-size: 3.5rem;
+    line-height: 1.15;
+    margin: 20px 0 25px;
+}
+.hero-title em {
+    font-style: italic;
+    color: var(--accent-orange);
+    font-weight: 400;
+}
+.hero-lead {
+    color: var(--text-light-muted); /* MELHORADO: Deu leitura clara no fundo escuro */
+    font-size: 1.05rem;
+    max-width: 500px;
+    line-height: 1.6;
+    margin-bottom: 35px;
+}
+
+/* Hero Cards & Stats */
+.hero-floating-card {
+    background: var(--dark-chocolate);
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+.hero-floating-card img {
+    border-radius: 14px;
+    width: 100%;
+}
+.hero-floating-card-body {
+    background: linear-gradient(to top, #1a0f0a, rgba(26,15,10,0.8));
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    padding: 15px;
+    border-radius: 0 0 14px 14px;
+}
+.stamp-controlled {
+    width: 76px;
+    height: 76px;
+    background-color: #ffffff;
+    border-radius: 50%;
+    position: absolute;
+    left: -38px;
+    bottom: 20px;
+    z-index: 10;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 5px;
+}
+.stamp-controlled span {
+    font-size: 0.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--dark-coffee);
+    line-height: 1.1;
+}
+.stamp-controlled i {
+    color: var(--accent-orange);
+    font-size: 0.9rem;
+}
+
+.hero-section .stat-label { 
+    color: var(--text-light-muted); /* MELHORADO: Tags de dados agora estão legíveis no Hero */
+}
+.stat-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1;
+}
+.stat-val-orange { color: var(--accent-orange); }
+
+/* ==========================================================================
+   6. VALUE PROPS & CATALOG FILTERS
+   ========================================================================== */
+.props-section {
+    background-color: var(--bg-cream);
+    padding: 40px 0;
+    border-bottom: 1px solid var(--border-light);
+}
+.prop-box {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+.prop-icon {
+    background-color: #f3eae0;
+    color: var(--accent-orange);
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+.prop-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+}
+.prop-desc {
+    font-size: 0.8rem;
+    color: #6e6158;
+    line-height: 1.4;
+    margin: 0;
+}
+
+.catalog-section { padding: 80px 0; }
+.filter-btn {
+    background-color: #f3eae0;
+    border: none;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--dark-coffee);
+    margin-left: 8px;
+    margin-bottom: 8px;
+    transition: all var(--transition-fast);
+}
+.filter-btn.active, .filter-btn:hover {
+    background-color: var(--dark-coffee);
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   7. COFFEE PRODUCT CARDS
+   ========================================================================== */
+.coffee-card {
+    background-color: #ffffff;
+    border-radius: 24px;
+    box-shadow: 0 10px 30px rgba(40, 22, 16, 0.03);
+    overflow: hidden;
+    margin-bottom: 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+.coffee-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(40, 22, 16, 0.08);
+}
+.card-img-wrapper {
+    position: relative;
+    height: 220px;
+    background-color: #f7f7f7;
+}
+.card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.badge-sca {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: rgba(26, 15, 10, 0.75);
+    backdrop-filter: blur(4px);
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 5px 10px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.badge-sca i { color: var(--accent-orange); }
+.badge-status {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: var(--accent-orange);
+    color: #ffffff;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 5px 12px;
+    border-radius: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+}
+.coffee-card-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+.coffee-origin {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--accent-orange);
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+}
+.coffee-title {
+    font-size: 1.4rem;
+    margin-bottom: 18px;
+    color: var(--dark-coffee);
+}
+.spec-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px 15px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #f5efe6;
+    padding-bottom: 16px;
+}
+.spec-value {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--dark-coffee);
+}
+.note-tag {
+    background-color: #f5efe6;
+    color: #5c4e46;
+    font-size: 0.75rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    display: inline-block;
+    margin: 0 6px 6px 0;
+    font-weight: 500;
+}
+.grind-select {
+    background-color: var(--bg-cream);
+    border: 1px solid #eadecc;
+    border-radius: 10px;
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    color: var(--dark-coffee);
+    font-weight: 500;
+    margin-bottom: 20px;
+    width: 100%;
+}
+.price-row {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.weight-text {
+    font-size: 0.7rem;
+    color: #a39489;
+    margin-bottom: 2px;
+}
+.price-val {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--dark-coffee);
+}
+
+/* ==========================================================================
+   8. CALCULATOR SECTION
+   ========================================================================== */
+.calculator-section {
+    background-color: var(--dark-coffee);
+    color: #ffffff;
+}
+.calc-container-left, .summary-box {
+    background-color: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 24px;
+    padding: 30px;
+}
+.summary-box {
+    border-radius: 12px;
+    padding: 15px 20px;
+}
+.calc-container-right {
+    background-color: #ffffff;
+    color: var(--dark-coffee);
+    border-radius: 24px;
+    padding: 40px;
+    height: 100%;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+}
+.method-btn {
+    background-color: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 14px;
+    padding: 14px;
+    color: #ffffff;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all var(--transition-fast);
+}
+.method-btn.active, .method-btn:hover {
+    background-color: rgba(201, 125, 85, 0.1);
+    border-color: var(--accent-orange);
+}
+.method-btn i {
+    color: var(--text-light-muted); /* MELHORADO: Ícones inativos na área escura agora aparecem discretamente */
+    font-size: 1.1rem;
+}
+.method-btn.active i { color: var(--accent-orange); }
+
+/* Range Input Slider Customization */
+.custom-range {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 6px;
+    border-radius: 5px;
+    background: rgba(255,255,255,0.1);
+    outline: none;
+    margin: 15px 0;
+}
+.custom-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: var(--accent-orange);
+    cursor: pointer;
+    transition: transform 0.1s;
+}
+.custom-range::-webkit-slider-thumb:hover { transform: scale(1.2); }
+
+.step-item {
+    background-color: var(--bg-cream);
+    border-radius: 12px;
+    padding: 15px 20px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+}
+.step-number {
+    background-color: var(--dark-coffee);
+    color: #ffffff;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+.step-text {
+    font-size: 0.85rem;
+    color: #4a3e36;
+    margin: 0;
+    line-height: 1.5;
+}
+.tip-box {
+    background-color: #faf2e6;
+    border: 1px solid #eddcc4;
+    border-radius: 12px;
+    padding: 15px 20px;
+    font-size: 0.85rem;
+    color: #5c4e46;
+}
+
+/* ==========================================================================
+   9. SUBSCRIPTION CLUB & STORY
+   ========================================================================== */
+.club-section, .story-section { padding: 80px 0; }
+.club-section { border-bottom: 1px solid var(--border-light); }
+
+.club-card {
+    background-color: #ffffff;
+    border-radius: 24px;
+    padding: 40px;
+    box-shadow: 0 15px 40px rgba(40, 22, 16, 0.04);
+    border: 1px solid rgba(234, 222, 204, 0.5);
+}
+.check-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.check-list li {
+    font-size: 0.9rem;
+    color: #4a3e36;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.check-list li i {
+    color: var(--accent-orange);
+    font-size: 1.1rem;
+}
+
+.option-selector {
+    border: 1px solid var(--border-light);
+    border-radius: 14px;
+    padding: 15px;
+    text-align: center;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.option-selector.active {
+    border-color: var(--accent-orange);
+    background-color: rgba(201, 125, 85, 0.02);
+    box-shadow: 0 0 0 1px var(--accent-orange);
+}
+.option-selector .opt-title {
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--dark-coffee);
+    margin-bottom: 2px;
+}
+.option-selector .opt-sub {
+    font-size: 0.75rem;
+    color: #a39489;
+}
+
+.total-box {
+    background-color: var(--bg-cream);
+    border-radius: 16px;
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.story-img-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 20px;
+}
+.story-img-col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.story-img-grid img {
+    width: 100%;
+    border-radius: 20px;
+    object-fit: cover;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+}
+.quote-box {
+    background-color: #f5efe6;
+    border-radius: 18px;
+    padding: 25px;
+    display: flex;
+    gap: 15px;
+    align-items: flex-start;
+}
+.quote-icon {
+    background-color: var(--dark-coffee);
+    color: #ffffff;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   10. FOOTER
+   ========================================================================== */
+footer {
+    background-color: var(--dark-coffee);
+    color: #ffffff;
+    padding: 60px 0 30px;
+}
+.footer-brand h4 {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+}
+.footer-heading {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--accent-orange);
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.footer-links li { margin-bottom: 10px; }
+.footer-links a {
+    color: var(--text-light-muted); /* MELHORADO: Links do rodapé saíram do cinza invisível para o bege claro */
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color var(--transition-fast);
+}
+.footer-links a:hover { color: #ffffff; }
+
+.newsletter-input {
+    background-color: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.1);
+    color: #ffffff;
+    font-size: 0.85rem;
+    padding: 10px 16px;
+    border-radius: 30px;
+    width: 100%;
+}
+.newsletter-input::placeholder { 
+    color: var(--text-light-muted); /* MELHORADO: Placeholder do input agora é legível */
+}
+.newsletter-input:focus {
+    background-color: rgba(255,255,255,0.1);
+    border-color: var(--accent-orange);
+    box-shadow: none;
+    outline: none;
+}
